@@ -1,12 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GFG</title>
+    <title>Granzotto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            z-index: 10;
+        }
+
+        #hero.hidden {
+            opacity: 0;
+            transform: scale(1.2);
+            pointer-events: none;
+        }
+
+        #hero h1 {
+            font-size: 10vw;
+            letter-spacing: 5px;
+        }
+
+        /* CONTENUTO */
+        #content {
+            min-height: 200vh;
+            background: #f5f5f5;
+            padding: 150px 10%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        #content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section {
+            margin-bottom: 100px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World this is my first web page.</h1>
+
+    <div id="hero">
+        <h1>GRANZOTTO</h1>
+    </div>
+
+    <div id="content">
+        <section>
+            <h2>Benvenuto</h2>
+            <p>
+                Questo è il resto del sito che compare dopo lo scroll.
+                Puoi inserire testi, immagini o qualsiasi contenuto.
+            </p>
+        </section>
+
+        <section>
+            <h2>Chi siamo</h2>
+            <p>
+                Sezione di esempio per dimostrare lo scroll della pagina.
+            </p>
+        </section>
+
+        <section>
+            <h2>Contatti</h2>
+            <p>
+                Email, social, o quello che vuoi.
+            </p>
+        </section>
+    </div>
+
+    <script>
+        let hasScrolled = false;
+
+        window.addEventListener("wheel", () => {
+            if (!hasScrolled) {
+                hasScrolled = true;
+                document.getElementById("hero").classList.add("hidden");
+                document.getElementById("content").classList.add("visible");
+            }
+        });
+    </script>
+
 </body>
 </html>
