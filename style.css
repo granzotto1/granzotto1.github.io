@@ -1,3 +1,8 @@
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +14,6 @@ body {
     overflow-x: hidden;
 }
 
-/* HERO */
 #hero {
     height: 100vh;
     display: flex;
@@ -36,7 +40,6 @@ body {
     letter-spacing: 5px;
 }
 
-/* CONTENUTO */
 #content {
     min-height: 100vh;
     background: #f5f5f5;
