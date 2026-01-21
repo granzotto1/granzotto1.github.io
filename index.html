@@ -1,39 +1,87 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Granzotto</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Granzotto — Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="hero">
-        <h1>GRANZOTTO</h1>
+  <header id="hero">
+    <div class="hero-content">
+      <h1>GRANZOTTO</h1>
+      <div class="hero-subtitle">4ᵃ informatica</div>
+      <div class="hero-tagline">Canvas • JavaScript • piccoli esperimenti</div>
+      
+      <nav class="hero-nav">
+        <a href="#progetti">Progetti</a>
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
     </div>
+  </header>
 
-    <div id="content">
-        <section>
-            <h2>Benvenuto</h2>
-            <p>
-                Questo è il resto del sito che compare dopo lo scroll.
-                Puoi inserire testi, immagini o qualsiasi contenuto.
-            </p>
-        </section>
+  <main>
 
-        <section>
-            <h2>Chi siamo</h2>
-            <p>
-                Sezione di esempio per dimostrare lo scroll della pagina.
-            </p>
-        </section>
+    <section id="progetti">
+      <div class="section-header">
+        <h2>Progetti</h2>
+        <p>Alcuni esperimenti fatti con HTML5 Canvas</p>
+      </div>
 
-        <section>
-            <h2>Contatti</h2>
-            <p>
-                Email, social, o quello che vuoi.
-            </p>
-        </section>
-    </div>
+      <div class="projects-grid">
+
+        <a href="projects/koch.html" class="project-card" target="_blank">
+          <div class="project-preview">
+            <img src="assets/koch.jpg" alt="Anteprima Snake" loading="lazy">
+            <div class="preview-overlay">→ Apri demo</div>
+          </div>
+          <div class="project-info">
+            <h3>Snake</h3>
+            <p>Gioco classico con collisioni, punteggio e coda che cresce</p>
+            <div class="tags">
+              <span>Canvas</span>
+              <span>Game</span>
+            </div>
+          </div>
+        </a>
+        <!-- duplica il blocco <a> qui sotto per aggiungere altri progetti -->
+
+      </div>
+    </section>
+
+
+    <section id="chi-sono">
+      <div class="section-header">
+        <h2>Chi sono</h2>
+      </div>
+      <div class="about-text">
+        <p>Ciao, sono uno studente di informatica al quarto anno.</p>
+        <p>Mi piace scrivere codice che si muove sullo schermo: soprattutto con <strong>Canvas 2D</strong>, ma sto iniziando a guardare anche verso altre cose (Three.js, p5.js, shader...).</p>
+        <p>Nel 2026 finirò il quinto e vorrei provare a fare qualcosa di più strutturato.</p>
+      </div>
+    </section>
+
+
+    <section id="contatti">
+      <div class="section-header">
+        <h2>Contatti</h2>
+      </div>
+      <div class="contact-links">
+        <p>Email: <a href="mailto:giovanni.granzotto@itiszuccante.edu.it">giovanni.granzotto@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/granzotto1" target="_blank">@tuo-username</a></p>
+        <!-- <p>Discord: tuo#1234</p> -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
 </body>
-<link rel="stylesheet" href="style.css">
-<script src="main.js"></script>
 </html>
