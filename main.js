@@ -1,25 +1,15 @@
-// Fade hero quando si scende
-window.addEventListener('scroll', () => {
-    const hero = document.getElementById('hero');
-    if (!hero) return;
-    
-    if (window.scrollY > 180) {
-      hero.style.opacity = '0';
-      hero.style.pointerEvents = 'none';
-    } else {
-      hero.style.opacity = '1';
-    }
-  });
+document.querySelectorAll('.project').forEach(el => {
+  const href = el.getAttribute('data-href');
   
-  // Fade-in sezioni (opzionale)
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  if (href) {
+    el.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey) {
+        window.open(href, '_blank');
+      } else {
+        window.location.href = href;
       }
     });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
+  }
+});
+
+console.log('zero errori strano vero?');

@@ -1,222 +1,111 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    background: #0a0a0a;
-    color: #e0e0e0;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    line-height: 1.55;
-  }
-  
-  #hero {
-    height: 100vh;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    transition: opacity 0.8s ease;
-  }
-  
-  .hero-content {
-    max-width: 860px;
-    padding: 0 1.5rem;
-  }
-  
-  h1 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(5rem, 14vw, 11rem);
-    letter-spacing: -0.06em;
-    line-height: 0.92;
-    margin-bottom: 1.2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.7rem;
-    color: #777;
-    margin-bottom: 0.8rem;
-  }
-  
-  .hero-tagline {
-    font-size: 1.35rem;
-    color: #999;
-    margin-bottom: 3rem;
-  }
-  
-  .hero-nav {
-    display: flex;
-    gap: 2.8rem;
-    justify-content: center;
-    font-size: 1.25rem;
-  }
-  
-  .hero-nav a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.25s;
-  }
-  
-  .hero-nav a:hover {
-    color: white;
-  }
-  
-  /* ---------------------------------- */
-  
-  main {
-    padding: clamp(6rem, 12vw, 14rem) 5% 8rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .section-header {
-    margin-bottom: 3.5rem;
-  }
-  
-  h2 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 3.4rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .section-header p {
-    color: #888;
-    font-size: 1.25rem;
-  }
-  
-  /* Progetti */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2.5rem;
-  }
-  
-  .project-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background: #111;
-    border: 1px solid #222;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.28s ease;
-  }
-  
-  .project-card:hover {
-    transform: translateY(-10px);
-    border-color: #444;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  }
-  
-  .project-preview {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #000;
-  }
-  
-  .project-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  
-  .project-card:hover .project-preview img {
-    transform: scale(1.06);
-  }
-  
-  .preview-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-  
-  .project-card:hover .preview-overlay {
-    opacity: 1;
-  }
-  
-  .project-info {
-    padding: 1.4rem 1.6rem 1.8rem;
-  }
-  
-  .project-info h3 {
-    font-size: 1.55rem;
-    margin-bottom: 0.6rem;
-  }
-  
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 1rem;
-  }
-  
-  .tags span {
-    background: #1a1a1a;
-    color: #aaa;
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-  }
-  
-  /* Chi sono & Contatti */
-  .about-text,
-  .contact-links {
-    max-width: 680px;
-    font-size: 1.18rem;
-    color: #ddd;
-  }
-  
-  .about-text p,
-  .contact-links p {
-    margin-bottom: 1.4rem;
-  }
-  
-  .contact-links a {
-    color: #4cc9f0;
-    text-decoration: none;
-  }
-  
-  .contact-links a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive */
-  @media (max-width: 700px) {
-    .hero-nav {
-      flex-direction: column;
-      gap: 1.6rem;
-    }
-    
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  section {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: all 0.8s ease-out;
+html, body {
+  height: 100%;
+  background: #000;
+  color: #e0e0e0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  padding: 5vh 6vw;
+  padding-bottom: 20vh;
+}
+
+header {
+  margin-bottom: 14vh;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.5em;
+}
+
+.logo span {
+  opacity: 0.6;
+}
+
+.info {
+  font-size: 0.9rem;
+  opacity: 0.65;
+  line-height: 1.6;
+}
+
+.info a {
+  color: #88ddff;
+  text-decoration: none;
+}
+
+.info a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+main {
+  counter-reset: proj;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 2rem;
+  margin-bottom: 1.8rem;
+  align-items: baseline;
+  transition: all 0.13s ease;
+  cursor: pointer;
+}
+
+.number {
+  text-align: right;
+  font-weight: 700;
+  color: #555;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+}
+
+.title {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.project:hover .title {
+  color: #a0e0ff;
+}
+
+.project:hover {
+  background: rgba(18, 18, 22, 0.45);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 3px;
+}
+
+footer {
+  bottom: 0;
+  position: fixed;
+  font-size: 0.82rem;
+  opacity: 0.45;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 6vh 7vw;
   }
-  
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .project {
+    grid-template-columns: 50px 1fr;
+    gap: 1.4rem;
   }
+  .logo {
+    font-size: 1.9rem;
+  }
+}
