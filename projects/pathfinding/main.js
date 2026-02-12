@@ -7,7 +7,7 @@ const btnRegenerate = document.getElementById('btnRegenerate');
 const btnClearRun = document.getElementById('btnClearAndRun');
 
 let RANGE = 400;
-let POINTS_COUNT = 1000;
+let POINTS_COUNT = 100;
 let delay = 10;
 
 let points = [];
