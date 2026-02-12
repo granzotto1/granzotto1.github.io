@@ -18,9 +18,6 @@ body {
   padding-bottom: 20vh;
 }
 
-/* ────────────────────────────────────────────────
-   Layout per canvas + pannello controlli
-───────────────────────────────────────────────── */
 .container {
   display: grid;
   grid-template-columns: 340px 1fr;
@@ -110,7 +107,6 @@ button:active {
   opacity: 0.6;
 }
 
-/* Responsive – manteniamo lo stesso comportamento del tuo sito */
 @media (max-width: 720px) {
   body {
     padding: 6vh 7vw;
