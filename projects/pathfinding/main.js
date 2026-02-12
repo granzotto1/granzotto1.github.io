@@ -16,6 +16,9 @@ let distanceMatrix = [];
 async function generateAndDraw() {
     ctx.clearRect(0, 0, RANGE, RANGE);
 
+    points = [];
+    distanceMatrix = [];
+
     drawBox();
     initDistanceMatrix();
 
