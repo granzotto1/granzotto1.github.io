@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Punti → Dijkstra Visualizer</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Opzionale: font JetBrains Mono da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <div class="container">
+
+        <aside class="controls-panel">
+            <h2>Controlli</h2>
+
+            <div class="control-group">
+                <label for="pointsCount">Numero di punti:</label>
+                <input type="range" id="pointsCount" min="10" max="150" value="50" step="5">
+                <output id="pointsCountValue">50</output>
+            </div>
+
+            <div class="control-group">
+                <label for="delayMs">Delay animazione (ms):</label>
+                <input type="range" id="delayMs" min="0" max="100" value="10" step="5">
+                <output id="delayMsValue">10</output>
+            </div>
+
+            <div class="control-group">
+                <button id="btnRegenerate">Genera nuovi punti</button>
+                <button id="btnClearAndRun">Pulisci & Ricalcola</button>
+            </div>
+
+            <div class="status">
+                <small>Ultimo percorso: <span id="pathLength">—</span></small>
+            </div>
+        </aside>
+
+        <main>
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </main>
+
+    </div>
+
+    <script src="main.js"></script>
 </body>
-<script src="main.js"></script>
 </html>

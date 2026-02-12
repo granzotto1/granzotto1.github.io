@@ -1,58 +1,48 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const statusEl = document.getElementById('pathLength');
+const pointsInput = document.getElementById('pointsCount');
+const delayInput = document.getElementById('delayMs');
+const btnRegenerate = document.getElementById('btnRegenerate');
+const btnClearRun = document.getElementById('btnClearAndRun');
 
-const RANGE = 100;
-const POINTS_COUNT = 10;
-const delay = 10;
+let RANGE = 400;
+let POINTS_COUNT = 1000;
+let delay = 10;
 
 let points = [];
 let distanceMatrix = [];
 
+async function generateAndDraw() {
+    ctx.clearRect(0, 0, RANGE, RANGE);
 
-async function main() {
     drawBox();
     initDistanceMatrix();
 
     for (let i = 0; i < POINTS_COUNT; i++) {
-        
         await sleep(delay);
-
-        let p = randomPoint();
+        const p = randomPoint();
         points.push(p);
         updateDistanceMatrix(i);
     }
 
-    console.table(distanceMatrix);
-
-    for (let i = 0; i < POINTS_COUNT; i++) {
-        for (let j = 0; j < POINTS_COUNT; j++) {
-            await sleep(delay);
-            console.log(i, j)
-            console.log(Math.sqrt(distanceMatrix[i][j]));
-            drawLine(points[i], points[j]);
-
-        }
+    let start = Math.floor(Math.random() * POINTS_COUNT);
+    let end = Math.floor(Math.random() * POINTS_COUNT);
+    
+    while (end === start) {
+        end = Math.floor(Math.random() * POINTS_COUNT);
     }
-    let random1 = points[Math.floor(Math.random() * 5) -1];
-    let random2 = points[Math.floor(Math.random() * 5) -1];
 
-    drawPoint(random1, 'red');
-}
+    const path = dijkstra(start, end);
 
-function initDistanceMatrix() {
-    for (let i = 0; i < POINTS_COUNT; i++) {
-        distanceMatrix[i] = [];
-        for (let j = 0; j < POINTS_COUNT; j++) {
-            distanceMatrix[i][j] = 0;
-        }
+
+    for (let i = 0; i < path.length - 1; i++) {
+        drawLine(points[path[i]], points[path[i + 1]], '#60a0ff');
     }
-}
 
-function updateDistanceMatrix(index) {
-    for (let i = 0; i < index; i++) {
-        let dist = distanceSquared(points[i], points[index]);
-        distanceMatrix[i][index] = dist;
-        distanceMatrix[index][i] = dist;
+
+    if (statusEl) {
+        statusEl.textContent = `${path.length - 1} segmenti`;
     }
 }
 
@@ -66,34 +56,106 @@ function distanceSquared(p1, p2) {
     return dx * dx + dy * dy;
 }
 
-function drawBox() {
-    ctx.strokeStyle = 'black';
-    ctx.strokeRect(0, 0, RANGE * 2, RANGE * 2);
+function randomPoint() {
+    const point = {x: Math.random() * RANGE,y: Math.random() * RANGE};
+    drawPoint(point.x, point.y, '#ffffff');
+    return point;
 }
 
-function drawPoint(x, y, color) {
+function drawBox() {
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0, 0, RANGE, RANGE);
+}
+
+function drawPoint(x, y, color = '#ffffff') {
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.arc(x, y, 2, 0, Math.PI * 2);
+    ctx.arc(x, y, 2.5, 0, Math.PI * 2);
     ctx.fill();
 }
 
-function drawLine(p1, p2) {
+function drawLine(p1, p2, color = '#60a0ff') {
     ctx.beginPath();
-    ctx.strokeStyle = 'gray';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.5;
     ctx.moveTo(p1.x, p1.y);
     ctx.lineTo(p2.x, p2.y);
     ctx.stroke();
 }
 
-function randomPoint() {
-    const point = {
-        x: Math.random() * RANGE * 2,
-        y: Math.random() * RANGE * 2
-    };
-
-    drawPoint(point.x, point.y);
-    return point;
+function initDistanceMatrix() {
+    for (let i = 0; i < POINTS_COUNT; i++) {
+        distanceMatrix[i] = [];
+        for (let j = 0; j < POINTS_COUNT; j++) {
+            distanceMatrix[i][j] = 0;
+        }
+    }
 }
 
-window.addEventListener('load', main);
+function updateDistanceMatrix(newIndex) {
+    for (let i = 0; i < newIndex; i++) {
+        let dist = distanceSquared(points[i], points[newIndex]);
+        distanceMatrix[i][newIndex] = dist;
+        distanceMatrix[newIndex][i] = dist;
+    }
+}
+
+function dijkstra(startIndex, endIndex) {
+    let n = POINTS_COUNT;
+    let dist = Array(n).fill(Infinity);
+    let visited = Array(n).fill(false);
+    let prev = Array(n).fill(null);
+    let path = [];
+
+    dist[startIndex] = 0;
+
+    for (let count = 0; count < n; count++) {
+        let u = -1;
+
+        for (let i = 0; i < n; i++) {
+            if (!visited[i] && (u === -1 || dist[i] < dist[u])) {
+                u = i;
+            }
+        }
+
+        if (u !== -1) {
+            visited[u] = true;
+
+            for (let v = 0; v < n; v++) {
+                let w = distanceMatrix[u][v];
+                if (!visited[v] && w > 0 && dist[u] + w < dist[v]) {
+                    dist[v] = dist[u] + w;
+                    prev[v] = u;
+                }
+            }
+        }
+    }
+
+    for (let at = endIndex; at !== null; at = prev[at]) {
+        path.push(at);
+    }
+
+    return path;
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('pointsCountValue').textContent = POINTS_COUNT;
+    document.getElementById('delayMsValue').textContent = delay;
+
+    pointsInput?.addEventListener('input', e => {
+        POINTS_COUNT = +e.target.value;
+        document.getElementById('pointsCountValue').textContent = POINTS_COUNT;
+    });
+
+    delayInput?.addEventListener('input', e => {
+        delay = + e.target.value;
+        document.getElementById('delayMsValue').textContent = delay;
+    });
+
+    btnRegenerate?.addEventListener('click', generateAndDraw);
+    btnClearRun?.addEventListener('click', generateAndDraw);
+
+    generateAndDraw();
+});

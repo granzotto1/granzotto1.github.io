@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  color: #e0e0e0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  padding: 5vh 6vw;
+  padding-bottom: 20vh;
+}
+
+/* ────────────────────────────────────────────────
+   Layout per canvas + pannello controlli
+───────────────────────────────────────────────── */
+.container {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+  background: #000;
+  border: 1px solid #222;
+}
+
+.controls-panel {
+  border-radius: 3px;
+  padding: 1.8rem 2rem;
+  height: fit-content;
+  backdrop-filter: blur(4px);
+}
+
+.controls-panel h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  margin-bottom: 1.6rem;
+  color: #ffffff;
+}
+
+.control-group {
+  margin-bottom: 1.5rem;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.control-group input[type="range"] {
+  width: 100%;
+  accent-color: #ffffff;
+}
+
+.control-group output {
+  float: right;
+  color: #ffffff;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+button {
+  background: rgba(18, 18, 22, 0.8);
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 0.7rem 1.3rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.13s ease;
+  margin: 0.4rem 0.8rem 0.4rem 0;
+}
+
+button:hover {
+  background: rgba(40, 40, 48, 0.9);
+  border-color: #666;
+  color: #ffffff;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.status {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* Responsive – manteniamo lo stesso comportamento del tuo sito */
+@media (max-width: 720px) {
+  body {
+    padding: 6vh 7vw;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .controls-panel {
+    order: -1;
+  }
+
+  main {
+    min-height: 60vh;
+  }
+}
