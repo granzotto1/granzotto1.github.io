@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  color: #ddd;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  padding: 8vh 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  width: 100%;
+  max-width: 480px;
+}
+
+#random-color {
+  width: 100%;
+  height: 40vh;
+  min-height: 240px;
+  border: 1px solid #222;
+  margin-bottom: 3rem;
+}
+
+#controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  width: 100%;
+}
+
+button {
+  background: #111;
+  color: #a0d0ff;
+  border: 1px solid #333;
+  padding: 0.8rem 1.6rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border-radius: 2px;
+  min-width: 140px;
+}
+
+button:hover {
+  background: #181818;
+  border-color: #444;
+}
+
+p, #color-value {
+  font-size: 1.05rem;
+  color: #ccc;
+  text-align: center;
+}
+
+#color-value {
+  color: #88ccff;
+  word-break: break-all;
+}
+
+.count-info {
+  margin-top: 2.2rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+footer {
+  margin-top: auto;
+  padding: 4rem 0 2rem;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+  width: 100%;
+}
+
+/* schermi piccoli */
+@media (max-width: 640px) {
+  body {
+    padding: 6vh 5vw;
+  }
+  
+  #random-color {
+    height: 48vh;
+  }
+  
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
+}

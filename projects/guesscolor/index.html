@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color Temperature Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+    <div id="random-color"></div>
+
+    <div id="controls">
+      <button onclick="coldColor()">Freddo (cold)</button>
+      <button onclick="warmColor()">Caldo (warm)</button>
+      
+      <p>Colore attuale: <span id="color-value"></span></p>
+      <p class="count-info">Hai classificato <strong id="count">0</strong> colori</p>
+      <p>Predetto: <strong id="prediction">—</strong></p>
+
+      <div id="history" style="margin-top:2rem; width:100%;">
+        <p style="font-size:0.95rem; color:#777; margin-bottom:0.6rem;">Ultimi colori:</p>
+        <div id="color-list" style="font-size:0.9rem; color:#aaa; line-height:1.5;"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    local only — colori caldo/freddo
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
