@@ -50,7 +50,7 @@ function koch(t, livello, lunghezza) {
     }
 }
 
-ctx.strokeStyle = "black";
+ctx.strokeStyle = "white";
 
 let t = new Tartaruga(200, 300);
 t.angolo = 0;

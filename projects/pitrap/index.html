@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trapezoid for PI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Trapezoid simulation</h1>
+    <div>
+        <canvas id="Canvas" width="700" height="700"></canvas>
+    </div>
+    
+    <div>
+        <textarea id="text" placeholder="(Pi = 3.14)" readonly style="resize: none;" disabled></textarea>
+        <label for="rectangles">Number of rectangles:</label>
+        <input type="range" name="rectangles" id="rectangles" autocomplete="off" min="0" max="1000" step="1" value="100">
+ 
+    </div>
+    
+</body>
+<script src="main.js"></script>

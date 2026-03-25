@@ -1,0 +1,42 @@
+/* BLACK THEME - Versione ultra minimal */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#zoom {
+    width: 700px;
+    height: 6px;
+    background: #222222;
+    accent-color: #00ff9d;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+canvas {
+    background: #000000;
+    border: 1px solid #333333;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.95);
+}
+
+/* Opzionale: titolo piccolo e chiaro */
+h1 {
+    color: #aaaaaa;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
